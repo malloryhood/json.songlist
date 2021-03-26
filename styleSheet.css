@@ -1,0 +1,47 @@
+h1{
+    color: #e8f5fa;
+    font-size: 40px;
+    border: 3px solid #035d8a;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #05adf5;
+    padding: 1%;
+}
+
+h2{
+    color: #05adf5;
+    font-size: 35px;
+    text-align: center;
+    background-color: #e8f5fa;
+}
+
+body{
+    background-color: #e8f5fa;
+    color: #035d8a;
+    font-size: 23px;
+    font-family: Georgia;
+    text-align: center;
+    width: 80%;
+    padding-left: 10%;
+}
+
+input{
+    width: 50%;
+    font-size: 23px;
+    background-color: #E3F6EB;
+    margin-top: 2%;
+    margin-left: 1%;
+    text-align: center;
+    border-radius: 8px;
+    font-family: fantasy; 
+}
+select{
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 1%;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #035d8a;
+    font-size: 23px;
+    font-family: Georgia;
+}

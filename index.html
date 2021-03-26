@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JSON Song List</title>
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <link rel="stylesheet" type = "text/css" href="styleSheet.css">
+    </head>
+    <body>
+        <script language="javascript">
+    	$.getJSON( "https://raw.githubusercontent.com/malloryhood/json/main/songList.json", 
+    		  function( data ) { //Part 2
+                  dataStr=JSON.stringify(data);
+                  document.getElementById("strDisp").innerHTML=dataStr + "<br><br><br>";
+                  part3(data);
+              })
+              
+              function part3(data)
+              {
+                  //Part 3
+                  strHTML=""
+                  data.forEach(function(song){
+                      genreStr=song.genre[0]
+                      if(song.genre.length >1){
+                          for (n=1; n<song.genre.length; n++)
+                          {
+                              genreStr+=",&nbsp;"+song.genre[n]
+                          }
+                          
+                      }
+                      strHTML+="<p id='song'>"+song.title+"<br>Artist: "+song.artist+"<br>Genre: "+genreStr+"<br>Release Year: "+song.release+"<br></p>"
+                  })
+                  document.getElementById("viewDisp").innerHTML+=strHTML
+              }
+              
+            function genreSelect()
+            {
+                $.getJSON( "https://raw.githubusercontent.com/malloryhood/json/main/songList.json", 
+            		  function( data ) 
+                      { //Part 2
+                          genre=document.getElementById("genres").value;
+                          document.getElementById("selectDisp").innerHTML=""
+                          data.forEach(function(song)
+                          {
+                              strHTML="";
+                              for (n=0; n<song.genre.length; n++)
+                              {
+                                  if (song.genre[n] == genre)
+                                  {
+                                      strHTML+="<p id='song'>"+song.title+"<br>Artist: "+song.artist+"<br>Release Year: "+song.release+"<br></p>"
+                                      document.getElementById("selectDisp").innerHTML+=strHTML
+                                  }
+                              }                     
+                          })
+                      })
+                  }
+        </script>
+        <header>
+            <h1>JSON Song List</h1>
+        </header>
+        <h2>Raw String Display:</h2>
+        <div id="strDisp"></div>
+        <hr>
+        <h2>User Friendly Display:</h2>
+        <div id="viewDisp"></div>
+        <hr>
+        <h2>Pick a Genre!</h2><br>
+        <i>Pick your favorite genre to see just the songs from that genre!</i><br><br><br>
+            <form>
+                <label for="genres">Please select your desired genre: </label> 
+                <select name="genres" id="genres" onchange="genreSelect()">
+                    <option value="Country">Country</option>
+                    <option value="Hip Hop">Hip Hop</option>
+                    <option value="Pop">Pop</option>
+                    <option value="R and B">R and B</option>
+                </select>
+            </form>
+            <div id="selectDisp"><div>
+    </body>
+</html>
